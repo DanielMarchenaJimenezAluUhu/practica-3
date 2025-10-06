@@ -10,12 +10,18 @@ public class Cuenta {
 		this.saldo = i;
 	}
 
+	public Cuenta(String string, int i) {
+		this.numero = string;
+		this.saldo = i;
+	}
+
 	public void ingreso(int i) {
 		saldo += i;
 	}
 
 	public void reintegro(int i) {
-		saldo -= i;
+		if (saldo - i >= -500)
+			saldo -= i;
 	}
 
 	public String getNumero() {
