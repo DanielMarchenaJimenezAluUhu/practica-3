@@ -13,10 +13,16 @@ import main.Cuenta;
 class TestCuenta {
 	
 	private static Cuenta cuenta;
+	
+	private static Cuenta cuenta1;
+	private static Cuenta cuenta2;
 
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
 		cuenta = new Cuenta(0);
+		
+		cuenta1 = new Cuenta("12345", 50);
+		cuenta2 = new Cuenta("67890", 0);
 	}
 
 	@AfterAll
@@ -44,4 +50,18 @@ class TestCuenta {
 		assertEquals(-200, cuenta.getSaldo());
 	}
 
+	@Test
+	void test0014() {
+		cuenta1.reintegro(200);
+		cuenta2.reintegro(350);
+		cuenta1.ingreso(100);
+		cuenta2.reintegro(200);
+		cuenta2.reintegro(150);
+		cuenta1.reintegro(200);
+		cuenta2.ingreso(50);
+		cuenta2.reintegro(100);
+		
+		assertEquals(-250, cuenta1.getSaldo());
+		assertEquals(-450, cuenta2.getSaldo());
+	}
 }
