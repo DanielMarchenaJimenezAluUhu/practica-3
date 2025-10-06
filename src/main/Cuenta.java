@@ -11,11 +11,11 @@ public class Cuenta {
 	}
 
 	public void ingreso(int i) {
-		saldo = 200;
+		saldo += i;
 	}
 
 	public void reintegro(int i) {
-		saldo = -200;
+		saldo -= i;
 	}
 
 	public String getNumero() {
